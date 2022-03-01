@@ -7,6 +7,7 @@
       flex-dir="column"
       justify-content="center"
     >
+      <draft-box />
     </CBox>
   </div>
 </template>
