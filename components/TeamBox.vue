@@ -9,7 +9,7 @@ const imageAlt = 'Rear view of modern home with pool'
 </script>
 
 <template>
-  <c-box min-w="225px" border-width="1px" rounded="lg" overflow="hidden">
+  <c-box w="225px" h="140px" border-width="1px" rounded="lg" overflow="hidden">
     <c-box d="flex" align-items="center">
       <c-image h="30px" :src="imageUrl" :alt="imageAlt" />
       <c-box

@@ -12,5 +12,3 @@
     </CBox>
   </div>
 </template>
-
-<script></script>

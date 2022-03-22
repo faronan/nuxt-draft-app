@@ -36,7 +36,7 @@ const onClick = () => {
       />
     </c-form-control>
     <c-form-control mb="2">
-      <c-form-label>出身</c-form-label>
+      <c-form-label>所属</c-form-label>
       <c-input
         v-model="inputBelongs"
         type="text"
