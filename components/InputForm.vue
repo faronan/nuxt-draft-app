@@ -1,3 +1,15 @@
+<script setup>
+const count = ref(0)
+
+const increment = () => {
+  count.value++
+}
+
+const decrement = () => {
+  count.value--
+}
+</script>
+
 <template>
   <c-box p="4" w="300px">
     <c-form-control is-required mb="2">
@@ -15,10 +27,3 @@
     <c-button variant-color="blue" size="sm"> 送信 </c-button>
   </c-box>
 </template>
-
-<script>
-export default {
-  name: 'InputForm',
-}
-</script>
-<style></style>
