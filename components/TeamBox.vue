@@ -27,7 +27,6 @@
 
 <script>
 export default {
-  name: 'TeamBox',
   data() {
     return {
       property: {
