@@ -7,7 +7,7 @@ import {
 
 const { updateFormValue } = useInputTeamForm()
 
-const inputTeamName = ref('')
+const inputTeamName = ref<string>('')
 const inputIcon = ref<iconType>(initialIcon)
 const isOpen = ref<boolean>(false)
 
@@ -22,12 +22,12 @@ const findIconById = (id: number) => {
   const image = iconsDataList.find((image) => image.id == id)
   return image ?? { id: -1, ...initialIcon }
 }
-const onSelectImage = (id: number) => {
+const onIconClick = (id: number) => {
   inputIcon.value = findIconById(id)
   modalClose()
 }
 
-const onSubmitClick = () => {
+const onDecisionButtonClick = () => {
   updateFormValue(inputTeamName.value, inputIcon.value)
 }
 
@@ -86,7 +86,7 @@ const iconsDataList = [...Array(12)].map((_, i) => {
                 gap="2"
               >
                 <c-grid-item v-for="n in 12" :key="`${n}`">
-                  <div @click="onSelectImage(n)">
+                  <div @click="onIconClick(n)">
                     <c-image
                       h="40px"
                       w="60px"
@@ -103,7 +103,7 @@ const iconsDataList = [...Array(12)].map((_, i) => {
       </c-box>
     </c-form-control>
 
-    <c-button variant-color="blue" size="sm" @click="onSubmitClick">
+    <c-button variant-color="blue" size="sm" @click="onDecisionButtonClick">
       決定
     </c-button>
   </c-box>

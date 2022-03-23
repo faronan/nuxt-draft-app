@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useForm } from '~/composables/useForm'
+import { useInputPlayerForm } from '~/composables/useInputPlayerForm'
 
-const { updateFormValue } = useForm()
-const inputPlayerName = ref('')
-const inputPosition = ref('')
-const inputBelongs = ref('')
+const { updateFormValue } = useInputPlayerForm()
+const inputPlayerName = ref<string>('')
+const inputPosition = ref<string>('')
+const inputBelongs = ref<string>('')
 
-const onClick = () => {
+const onDecisionButtonClick = () => {
   updateFormValue(
     inputPlayerName.value,
     inputPosition.value,
@@ -44,6 +44,8 @@ const onClick = () => {
         placeholder="出身"
       />
     </c-form-control>
-    <c-button variant-color="blue" size="sm" @click="onClick"> 送信 </c-button>
+    <c-button variant-color="blue" size="sm" @click="onDecisionButtonClick">
+      決定
+    </c-button>
   </c-box>
 </template>

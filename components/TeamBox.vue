@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useForm } from '~/composables/useForm'
+import { useInputPlayerForm } from '~/composables/useInputPlayerForm'
 import { useInputTeamForm } from '~/composables/useInputTeamForm'
 
-const { playerName, position, belongs } = useForm()
+const { playerName, position, belongs } = useInputPlayerForm()
 const { teamName, icon } = useInputTeamForm()
 </script>
 
