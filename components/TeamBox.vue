@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { useForm } from '~/composables/useForm'
+import { useInputTeamForm } from '~/composables/useInputTeamForm'
 
 const { playerName, position, belongs } = useForm()
-
-const teamName = '巨人'
-const imageUrl = '/flags/flag1.gif'
-const imageAlt = 'Rear view of modern home with pool'
+const { teamName, icon } = useInputTeamForm()
 </script>
 
 <template>
   <c-box w="225px" h="140px" border-width="1px" rounded="lg" overflow="hidden">
     <c-box d="flex" align-items="center">
-      <c-image h="30px" :src="imageUrl" :alt="imageAlt" />
+      <c-image
+        v-if="icon.src"
+        h="30px"
+        w="45px"
+        :src="icon.src"
+        :alt="icon.alt"
+      />
       <c-box
         color="black.500"
         font-weight="semibold"

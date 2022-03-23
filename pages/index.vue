@@ -8,7 +8,8 @@
       justify-content="center"
     >
       <DraftBox />
-      <InputForm />
+      <InputPlayerForm />
+      <InputTeamForm />
     </CBox>
   </div>
 </template>
