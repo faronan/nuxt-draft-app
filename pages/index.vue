@@ -7,19 +7,8 @@
       flex-dir="column"
       justify-content="center"
     >
-      <draft-box />
-      <input-form />
+      <DraftBox />
+      <InputForm />
     </CBox>
   </div>
 </template>
-
-<script lang="ts">
-export default {
-  name: 'IndexPage',
-  data() {
-    return {}
-  },
-  computed: {},
-  methods: {},
-}
-</script>

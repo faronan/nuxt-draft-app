@@ -1,7 +1,17 @@
+<script setup lang="ts">
+import { useForm } from '~/composables/useForm'
+
+const { playerName, position, belongs } = useForm()
+
+const teamName = '巨人'
+const imageUrl = '/flags/flag1.gif'
+const imageAlt = 'Rear view of modern home with pool'
+</script>
+
 <template>
-  <c-box min-w="225px" border-width="1px" rounded="lg" overflow="hidden">
+  <c-box w="225px" h="140px" border-width="1px" rounded="lg" overflow="hidden">
     <c-box d="flex" align-items="center">
-      <c-image h="30px" :src="property.imageUrl" :alt="property.imageAlt" />
+      <c-image h="30px" :src="imageUrl" :alt="imageAlt" />
       <c-box
         color="black.500"
         font-weight="semibold"
@@ -9,36 +19,18 @@
         font-size="sm"
         ml="2"
       >
-        {{ property.teamName }}
+        {{ teamName }}
       </c-box>
     </c-box>
     <c-box p="4">
       <c-box color="black.500" font-weight="semibold" font-size="3xl">
-        {{ property.playerName }}
+        {{ playerName }}
       </c-box>
       <c-box color="black.500" font-weight="semibold" font-size="xs">
-        {{ property.position }}
+        {{ position }}
         <br />
-        {{ property.belongs }}
+        {{ belongs }}
       </c-box>
     </c-box>
   </c-box>
 </template>
-
-<script>
-export default {
-  name: 'TeamBox',
-  data() {
-    return {
-      property: {
-        imageUrl: '/flags/flag1.gif',
-        imageAlt: 'Rear view of modern home with pool',
-        teamName: 'ほげ',
-        playerName: 'ほげ　ふがお',
-        position: 'ほげ',
-        belongs: 'ほげほげ',
-      },
-    }
-  },
-}
-</script>

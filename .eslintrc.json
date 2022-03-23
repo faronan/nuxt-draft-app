@@ -4,7 +4,7 @@
     "es2021": true
   },
   "extends": [
-    "@nuxtjs/eslint-config-typescript",
+    "plugin:vue/vue3-recommended",
     "plugin:nuxt/recommended",
     "prettier"
   ],
@@ -14,5 +14,12 @@
     "sourceType": "module"
   },
   "plugins": ["vue", "@typescript-eslint"],
-  "rules": {}
+  "rules": {
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        "ignores": ["index"]
+      }
+    ]
+  }
 }
