@@ -1,7 +1,7 @@
-export const useForm = () => {
-  const playerName = useState('playerName', () => '')
-  const position = useState('position', () => '')
-  const belongs = useState('belongs', () => '')
+export const useInputPlayerForm = () => {
+  const playerName = useState<string>('playerName', () => '')
+  const position = useState<string>('position', () => '')
+  const belongs = useState<string>('belongs', () => '')
 
   const updateFormValue =
     (playerName: Ref<string>, position: Ref<string>, belongs: Ref<string>) =>

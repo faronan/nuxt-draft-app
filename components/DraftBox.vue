@@ -6,7 +6,7 @@
     padding="6"
     w="1500px"
   >
-    <c-grid-item v-for="n in 12" :key="`${n}`" :bg="`green.${n * 100}`">
+    <c-grid-item v-for="n in 12" :key="`${n}`">
       <TeamBox></TeamBox>
     </c-grid-item>
   </c-grid>
