@@ -13,7 +13,7 @@ const { teamIds } = useTeams()
     w="1500px"
   >
     <c-grid-item v-for="n in teamIds.length" :key="`${n}`">
-      <TeamBox></TeamBox>
+      <TeamBox :team-id="`${n + 1}`"></TeamBox>
     </c-grid-item>
   </c-grid>
 </template>
