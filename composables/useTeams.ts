@@ -1,11 +1,11 @@
-export interface iconType {
+export interface iconInterface {
   src: string
   alt: string
 }
-export interface teamType {
+export interface teamInterface {
   teamId: number
   teamName: string
-  icon: iconType
+  icon: iconInterface
   playerName: string
   position: string
   belongs: string
@@ -13,13 +13,17 @@ export interface teamType {
 
 export const useTeams = () => {
   const teamIds = useState<number[]>('teamIds', () => [])
-  const teamHash = useState<{ key: number; value: teamType }>(
+  const teamHash = useState<{ key: number; value: teamInterface }>(
     'teamHash',
     () => {}
   )
 
-  const createTeam = (teamId: number, teamName: string, icon: iconType) => {
-    const team: teamType = {
+  const createTeam = (
+    teamId: number,
+    teamName: string,
+    icon: iconInterface
+  ) => {
+    const team: teamInterface = {
       teamId: teamId,
       teamName: teamName,
       icon: icon,
@@ -31,8 +35,11 @@ export const useTeams = () => {
   }
 
   const addTeam =
-    (teamIds: Ref<number[]>, teamHash: Ref<{ key: number; value: teamType }>) =>
-    (inputTeamName: string, inputIcon: iconType) => {
+    (
+      teamIds: Ref<number[]>,
+      teamHash: Ref<{ key: number; value: teamInterface }>
+    ) =>
+    (inputTeamName: string, inputIcon: iconInterface) => {
       const teamId = teamIds.value.length + 1
       teamIds.value = [...teamIds.value, teamId]
       teamHash.value = {
@@ -42,7 +49,7 @@ export const useTeams = () => {
     }
 
   const updateTeam =
-    (teamHash: Ref<{ key: number; value: teamType }>) =>
+    (teamHash: Ref<{ key: number; value: teamInterface }>) =>
     (
       teamId: number,
       inputPlayerName: string,
