@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import {
-  useInputTeamForm,
-  iconType,
-  initialIcon,
-} from '~/composables/useInputTeamForm'
+import { iconType, useTeams } from '~/composables/useTeams'
 
-const { updateFormValue } = useInputTeamForm()
+const { addTeam } = useTeams()
 
 const inputTeamName = ref<string>('')
+const initialIcon: iconType = { src: '', alt: '' }
 const inputIcon = ref<iconType>(initialIcon)
-const isOpen = ref<boolean>(false)
 
+const isOpen = ref<boolean>(false)
 const modalOpen = () => {
   isOpen.value = true
 }
@@ -28,7 +25,7 @@ const onIconClick = (id: number) => {
 }
 
 const onDecisionButtonClick = () => {
-  updateFormValue(inputTeamName.value, inputIcon.value)
+  addTeam(inputTeamName.value, inputIcon.value)
 }
 
 const altList = [
