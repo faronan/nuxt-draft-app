@@ -41,9 +41,30 @@ export const useTeams = () => {
       }
     }
 
+  const updateTeam =
+    (teamHash: Ref<{ key: number; value: teamType }>) =>
+    (
+      teamId: number,
+      inputPlayerName: string,
+      inputPosition: string,
+      inputBelongs: string
+    ) => {
+      const team = teamHash.value[teamId]
+      teamHash.value = {
+        ...teamHash.value,
+        [teamId]: {
+          ...team,
+          playerName: inputPlayerName,
+          position: inputPosition,
+          belongs: inputBelongs,
+        },
+      }
+    }
+
   return {
     teamIds: readonly(teamIds),
     teamHash: readonly(teamHash),
     addTeam: addTeam(teamIds, teamHash),
+    updateTeam: updateTeam(teamHash),
   }
 }
