@@ -1,6 +1,8 @@
-import { iconType, initialIcon } from './useInputTeamForm'
-
-export type teamType = {
+export interface iconType {
+  src: string
+  alt: string
+}
+export interface teamType {
   teamId: number
   teamName: string
   icon: iconType
@@ -16,37 +18,26 @@ export const useTeams = () => {
     () => {}
   )
 
-  const createInitialTeam = (
-    teamId: number,
-    teamName: string,
-    icon: iconType
-  ) => {
-    const initialTeam: teamType = {
+  const createTeam = (teamId: number, teamName: string, icon: iconType) => {
+    const team: teamType = {
       teamId: teamId,
       teamName: teamName,
-      icon: initialIcon,
+      icon: icon,
       playerName: '',
       position: '',
       belongs: '',
     }
-    return initialTeam
+    return team
   }
-
-  // const teamId = useState<string>('teamName', () => -1)
-  // const teamName = useState<string>('teamName', () => '')
-  // const icon = useState<iconType>('icon', () => initialIcon)
-  // const playerName = useState<string>('playerName', () => '')
-  // const position = useState<string>('position', () => '')
-  // const belongs = useState<string>('belongs', () => '')
 
   const addTeam =
     (teamIds: Ref<number[]>, teamHash: Ref<{ key: number; value: teamType }>) =>
     (inputTeamName: string, inputIcon: iconType) => {
-      const teamId = teamIds.length
-      teamIds.value = [...teamIds, teamId]
+      const teamId = teamIds.value.length + 1
+      teamIds.value = [...teamIds.value, teamId]
       teamHash.value = {
-        ...teamHash,
-        teamId: createInitialTeam(teamId, inputTeamName, inputIcon),
+        ...teamHash.value,
+        [teamId]: createTeam(teamId, inputTeamName, inputIcon),
       }
     }
 

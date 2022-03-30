@@ -4,12 +4,12 @@ import { useTeams } from '~/composables/useTeams'
 const { teamHash } = useTeams()
 
 interface Props {
-  teamId: number
+  teamId: string
 }
 
 const props = defineProps<Props>()
-
-const team = teamHash[teamId]
+const teamId = Number(props.teamId)
+const team = teamHash.value[teamId]
 const { teamName, icon, playerName, position, belongs } = { ...team }
 </script>
 
