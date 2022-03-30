@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { useTeams } from '~/composables/useTeams'
 
-const { teamState } = useTeams()
-
 interface Props {
-  teamId: string
+  teamId: number
 }
-
 const props = defineProps<Props>()
-const teamId = Number(props.teamId)
-const team = teamState.value.find((team) => team.teamId == teamId)
-const { teamName, icon, playerName, position, belongs } = { ...team }
+
+const { getTeamById } = useTeams()
+const team = getTeamById(props.teamId)
+const { teamName, icon, players } = { ...team }
+const { playerName, position, belongs } = {
+  ...players[players.length - 1],
+}
 </script>
 
 <template>

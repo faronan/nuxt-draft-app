@@ -1,12 +1,17 @@
 import { database } from '~/plugins/firebase'
 import { ref as firebaseRef, set } from 'firebase/database'
-import { iconInterface, teamInterface } from './useTeams'
+import { iconInterface, playerInterface, teamInterface } from './useTeams'
 
 export const addTeam = (
   teamId: number,
   teamName: string,
   icon: iconInterface
 ) => {
+  const emptyPlayer: playerInterface = {
+    playerName: '',
+    position: '',
+    belongs: '',
+  }
   const team: teamInterface = {
     teamId: teamId,
     teamName: teamName,
@@ -14,9 +19,7 @@ export const addTeam = (
       src: icon.src,
       alt: icon.alt,
     },
-    playerName: '',
-    position: '',
-    belongs: '',
+    players: [emptyPlayer],
   }
   //TODO: roomIdの割り当て
   const roomId = 0

@@ -55,7 +55,7 @@ const iconsDataList = [...Array(12)].map((_, i) => {
       <c-form-label>チーム名</c-form-label>
       <c-input
         v-model="inputTeamName"
-        Interface="text"
+        type="text"
         size="md"
         placeholder="チーム名"
       />

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useTeams } from '~/composables/useTeams'
-
-const { updateTeam } = useTeams()
+import { selectPlayer } from '~/composables/selectPlayer'
 
 const inputPlayerName = ref<string>('')
 const inputPosition = ref<string>('')
@@ -10,7 +8,7 @@ const inputBelongs = ref<string>('')
 // TODO: ルームの構成が出来次第、自分のteamIdを指定するように修正する
 const teamId = 1
 const onDecisionButtonClick = () => {
-  updateTeam(
+  selectPlayer(
     teamId,
     inputPlayerName.value,
     inputPosition.value,
