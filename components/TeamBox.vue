@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import { useInputPlayerForm } from '~/composables/useInputPlayerForm'
-import { useInputTeamForm } from '~/composables/useInputTeamForm'
+import { useTeams } from '~/composables/useTeams'
 
-const { playerName, position, belongs } = useInputPlayerForm()
-const { teamName, icon } = useInputTeamForm()
+const { teamHash } = useTeams()
+
+interface Props {
+  teamId: string
+}
+
+const props = defineProps<Props>()
+const teamId = Number(props.teamId)
+const team = teamHash.value[teamId]
+const { teamName, icon, playerName, position, belongs } = { ...team }
 </script>
 
 <template>

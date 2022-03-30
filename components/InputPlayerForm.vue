@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { useInputPlayerForm } from '~/composables/useInputPlayerForm'
+import { useTeams } from '~/composables/useTeams'
 
-const { updateFormValue } = useInputPlayerForm()
+const { updateTeam } = useTeams()
+
 const inputPlayerName = ref<string>('')
 const inputPosition = ref<string>('')
 const inputBelongs = ref<string>('')
 
+// TODO: ルームの構成が出来次第、自分のteamIdを指定するように修正する
+const teamId = 1
 const onDecisionButtonClick = () => {
-  updateFormValue(
+  updateTeam(
+    teamId,
     inputPlayerName.value,
     inputPosition.value,
     inputBelongs.value
