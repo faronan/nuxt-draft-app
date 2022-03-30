@@ -1,7 +1,22 @@
 <script setup lang="ts">
-import { useTeams } from '~/composables/useTeams'
+import { teamInterface, useTeams } from '~/composables/useTeams'
+import { database } from '~/plugins/firebase'
+import { ref as firebaseRef, onValue } from 'firebase/database'
 
-const { teamIds } = useTeams()
+//TODO: roomIdの割り当て
+const roomId = 0
+const starCountRef = firebaseRef(database, `rooms/${roomId}/teams/`)
+onValue(starCountRef, (snapshot) => {
+  const isTeam = (t: unknown): t is teamInterface => {
+    return t.teamId != undefined && t.teamName != undefined
+  }
+
+  const data = snapshot.val()
+  const teams = data.filter((e: unknown) => isTeam(e))
+  updateTeamState(teams)
+})
+
+const { teamState, updateTeamState } = useTeams()
 </script>
 
 <template>
@@ -12,8 +27,8 @@ const { teamIds } = useTeams()
     padding="6"
     w="1500px"
   >
-    <c-grid-item v-for="n in teamIds.length" :key="`${n}`">
-      <TeamBox :teamId="`${n}`"></TeamBox>
+    <c-grid-item v-for="n in teamState.length" :key="`${n}`">
+      <TeamBox :team-id="`${n}`"></TeamBox>
     </c-grid-item>
   </c-grid>
 </template>
