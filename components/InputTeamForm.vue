@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { addTeam } from '~/composables/addTeam'
-import { iconInterface } from '~/composables/useTeams'
+import { iconInterface } from '~/composables/interfaces/teamInterfaces'
+import { addTeam } from '~/composables/libs/addTeam'
 
 const inputTeamName = ref<string>('')
 const initialIcon: iconInterface = { src: '', alt: '' }

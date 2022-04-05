@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { selectPlayer } from '~/composables/selectPlayer'
+import { selectPlayer } from '~/composables/libs/selectPlayer'
 
 const inputPlayerName = ref<string>('')
 const inputPosition = ref<string>('')

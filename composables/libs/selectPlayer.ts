@@ -1,6 +1,7 @@
 import { database } from '~/plugins/firebase'
 import { ref as firebaseRef, update } from 'firebase/database'
-import { playerInterface, teamInterface, useTeams } from './useTeams'
+import { useTeams } from '../useTeams'
+import { playerInterface, teamInterface } from '../interfaces/teamInterfaces'
 
 export const selectPlayer = (
   teamId: number,

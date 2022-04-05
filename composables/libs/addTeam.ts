@@ -1,6 +1,6 @@
 import { database } from '~/plugins/firebase'
 import { ref as firebaseRef, set } from 'firebase/database'
-import { iconInterface, teamInterface } from './useTeams'
+import { iconInterface, teamInterface } from '../interfaces/teamInterfaces'
 
 export const addTeam = (
   teamId: number,

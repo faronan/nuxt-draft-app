@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { teamInterface, useTeams } from '~/composables/useTeams'
-import { database } from '~/plugins/firebase'
 import { ref as firebaseRef, onValue } from 'firebase/database'
+import { database } from '~/plugins/firebase'
+import { teamInterface } from '~/composables/interfaces/teamInterfaces'
 
 const { teamsState, updateTeamState } = useTeams()
 //TODO: roomIdの割り当て

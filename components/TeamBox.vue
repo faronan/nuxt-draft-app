@@ -3,7 +3,7 @@ import {
   iconInterface,
   playerInterface,
   teamInterface,
-} from '~/composables/useTeams'
+} from '~/composables/interfaces/teamInterfaces'
 
 interface Props {
   team: teamInterface
