@@ -3,6 +3,7 @@ import { teamInterface, useTeams } from '~/composables/useTeams'
 import { database } from '~/plugins/firebase'
 import { ref as firebaseRef, onValue } from 'firebase/database'
 
+const { teamsState, updateTeamState } = useTeams()
 //TODO: roomIdの割り当て
 const roomId = 0
 const teamsRef = firebaseRef(database, `rooms/${roomId}/teams/`)
@@ -17,8 +18,6 @@ onValue(teamsRef, (snapshot) => {
     updateTeamState(teams)
   }
 })
-
-const { teamState, updateTeamState } = useTeams()
 </script>
 
 <template>
@@ -29,8 +28,8 @@ const { teamState, updateTeamState } = useTeams()
     padding="6"
     w="1500px"
   >
-    <c-grid-item v-for="n in teamState.length" :key="`${n}`">
-      <TeamBox :team-id="n"></TeamBox>
+    <c-grid-item v-for="teamState in teamsState" :key="`${teamState.teamId}`">
+      <TeamBox :team="teamState"></TeamBox>
     </c-grid-item>
   </c-grid>
 </template>

@@ -8,18 +8,15 @@ export const selectPlayer = (
   position: string,
   belongs: string
 ) => {
-  const { getTeamById } = useTeams()
-  const team = getTeamById(teamId)
+  const { teamsState } = useTeams()
+  const team = teamsState.value.find((t: teamInterface) => t.teamId == teamId)
 
   const player: playerInterface = {
     playerName: playerName,
     position: position,
     belongs: belongs,
   }
-  const players =
-    team.players.length > 1
-      ? [...team.players.slice(0, team.players.length - 1), player]
-      : [player]
+  const players = team.players ? [...team.players, player] : [player]
   const postData: teamInterface = {
     ...team,
     players: players,

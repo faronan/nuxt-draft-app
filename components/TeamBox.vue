@@ -1,29 +1,34 @@
 <script setup lang="ts">
-import { useTeams } from '~/composables/useTeams'
+import {
+  iconInterface,
+  playerInterface,
+  teamInterface,
+} from '~/composables/useTeams'
 
 interface Props {
-  teamId: number
+  team: teamInterface
 }
 const props = defineProps<Props>()
+const teamName = ref<string>(props.team.teamName)
+const icon = ref<iconInterface>(props.team.icon)
 
-const { getTeamById } = useTeams()
-const team = getTeamById(props.teamId)
-const { teamName, icon, players } = { ...team }
-const { playerName, position, belongs } = {
-  ...players[players.length - 1],
-}
+const player: playerInterface = computed(() => {
+  const players = props.team.players
+  if (players) {
+    return players[players.length - 1]
+  }
+  return {
+    playerName: '',
+    position: '',
+    belongs: '',
+  }
+})
 </script>
 
 <template>
   <c-box w="225px" h="140px" border-width="1px" rounded="lg" overflow="hidden">
-    <c-box d="flex" align-items="center">
-      <c-image
-        v-if="icon.src"
-        h="30px"
-        w="45px"
-        :src="icon.src"
-        :alt="icon.alt"
-      />
+    <c-box v-if="icon.src" d="flex" align-items="center">
+      <c-image h="30px" w="45px" :src="icon.src" :alt="icon.alt" />
       <c-box
         color="black.500"
         font-weight="semibold"
@@ -34,14 +39,14 @@ const { playerName, position, belongs } = {
         {{ teamName }}
       </c-box>
     </c-box>
-    <c-box p="4">
+    <c-box v-if="player.playerName" p="4">
       <c-box color="black.500" font-weight="semibold" font-size="3xl">
-        {{ playerName }}
+        {{ player.playerName }}
       </c-box>
       <c-box color="black.500" font-weight="semibold" font-size="xs">
-        {{ position }}
+        {{ player.position }}
         <br />
-        {{ belongs }}
+        {{ player.belongs }}
       </c-box>
     </c-box>
   </c-box>
