@@ -18,6 +18,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/emotion": "^0.1.0",
     "core-js": "^3.19.3",
+    "firebase": "^9.6.10",
     "nuxt-edge": "latest",
     "std-env": "^3.0.1",
     "ts-node": "^10.7.0",

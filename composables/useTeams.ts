@@ -1,70 +1,15 @@
-export interface iconType {
-  src: string
-  alt: string
-}
-export interface teamType {
-  teamId: number
-  teamName: string
-  icon: iconType
-  playerName: string
-  position: string
-  belongs: string
-}
+import { teamInterface } from './interfaces/teamInterfaces'
 
 export const useTeams = () => {
-  const teamIds = useState<number[]>('teamIds', () => [])
-  const teamHash = useState<{ key: number; value: teamType }>(
-    'teamHash',
-    () => {}
-  )
+  const teamsState = useState<teamInterface>('teamsState', () => [])
 
-  const createTeam = (teamId: number, teamName: string, icon: iconType) => {
-    const team: teamType = {
-      teamId: teamId,
-      teamName: teamName,
-      icon: icon,
-      playerName: '',
-      position: '',
-      belongs: '',
-    }
-    return team
-  }
-
-  const addTeam =
-    (teamIds: Ref<number[]>, teamHash: Ref<{ key: number; value: teamType }>) =>
-    (inputTeamName: string, inputIcon: iconType) => {
-      const teamId = teamIds.value.length + 1
-      teamIds.value = [...teamIds.value, teamId]
-      teamHash.value = {
-        ...teamHash.value,
-        [teamId]: createTeam(teamId, inputTeamName, inputIcon),
-      }
-    }
-
-  const updateTeam =
-    (teamHash: Ref<{ key: number; value: teamType }>) =>
-    (
-      teamId: number,
-      inputPlayerName: string,
-      inputPosition: string,
-      inputBelongs: string
-    ) => {
-      const team = teamHash.value[teamId]
-      teamHash.value = {
-        ...teamHash.value,
-        [teamId]: {
-          ...team,
-          playerName: inputPlayerName,
-          position: inputPosition,
-          belongs: inputBelongs,
-        },
-      }
+  const updateTeamState =
+    (teamsStateValue: Ref<teamInterface[]>) => (teams: teamInterface[]) => {
+      teamsStateValue.value = teams
     }
 
   return {
-    teamIds: readonly(teamIds),
-    teamHash: readonly(teamHash),
-    addTeam: addTeam(teamIds, teamHash),
-    updateTeam: updateTeam(teamHash),
+    teamsState: readonly(teamsState),
+    updateTeamState: updateTeamState(teamsState),
   }
 }

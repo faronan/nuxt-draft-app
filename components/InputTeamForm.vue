@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { iconType, useTeams } from '~/composables/useTeams'
-
-const { addTeam } = useTeams()
+import { iconInterface } from '~/composables/interfaces/teamInterfaces'
+import { addTeam } from '~/composables/libs/addTeam'
 
 const inputTeamName = ref<string>('')
-const initialIcon: iconType = { src: '', alt: '' }
-const inputIcon = ref<iconType>(initialIcon)
+const initialIcon: iconInterface = { src: '', alt: '' }
+const inputIcon = ref<iconInterface>(initialIcon)
 
 const isOpen = ref<boolean>(false)
 const modalOpen = () => {
@@ -25,7 +24,9 @@ const onIconClick = (id: number) => {
 }
 
 const onDecisionButtonClick = () => {
-  addTeam(inputTeamName.value, inputIcon.value)
+  //TODO: teamIdの割り当て
+  const teamId = 1
+  addTeam(teamId, inputTeamName.value, inputIcon.value)
 }
 
 const altList = [
